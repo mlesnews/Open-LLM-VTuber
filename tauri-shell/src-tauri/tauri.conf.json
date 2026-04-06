@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/tauri-apps/tauri/dev/crates/tauri-config-schema/schema.json",
+  "productName": "JARVIS Companion",
+  "version": "0.1.0",
+  "identifier": "llc.cedarbrook.jarvis-companion",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:1420",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "JARVIS Companion",
+        "width": 400,
+        "height": 600,
+        "resizable": false,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "x": 1500,
+        "y": 200
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' ws://localhost:12393 wss://localhost:12393 http://localhost:12393; img-src 'self' asset: https://asset.localhost blob: data:"
+    },
+    "trayIcon": {
+      "id": "main-tray",
+      "iconPath": "icons/icon.png",
+      "iconAsTemplate": true,
+      "menuOnLeftClick": false,
+      "title": "JARVIS"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}
