@@ -3,6 +3,7 @@ import * as PIXI from "pixi.js";
 import { Live2DModel } from "pixi-live2d-display";
 
 // Register the Ticker for Live2D updates
+// @ts-expect-error — pixi-live2d-display types lag behind pixi.js v7
 Live2DModel.registerTicker(PIXI.Ticker);
 
 interface Props {
@@ -77,12 +78,12 @@ export default function Live2DCanvas({
 
         // Remove any existing model
         if (modelRef.current) {
-          app.stage.removeChild(modelRef.current);
+          app.stage.removeChild(modelRef.current as any);
           modelRef.current.destroy();
         }
 
         model.anchor.set(0.5, 0.5);
-        app.stage.addChild(model);
+        app.stage.addChild(model as any);
         modelRef.current = model;
 
         fitModel();
